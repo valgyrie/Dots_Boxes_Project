@@ -2,13 +2,18 @@
 #include <string.h>
 #include "playgame.h"
 
-void addLine(Point arr[5][6], int row, int row2, int col, int col2) {
+int addLine(Point arr[5][6], int row, int row2, int col, int col2) {
     int differenceR = row2 - row;
     int differenceC = col2 - col;
 
+    if (differenceC > 0 && arr[row][col].right == 1) return 0;
+if (differenceC < 0 && arr[row][col].left == 1) return 0;
+if (differenceR > 0 && arr[row][col].down == 1) return 0;
+if (differenceR < 0 && arr[row][col].up == 1) return 0;
+
     if (differenceR != 0 && differenceC != 0) {
         printf("Invalid turn\n");
-        return;
+        return 1;
     }
 
     if (differenceR < 0) {
@@ -26,6 +31,7 @@ void addLine(Point arr[5][6], int row, int row2, int col, int col2) {
         arr[row][col].right = 1;
         arr[row2][col2].left = 1;
     }
+    return 1;
 }
 
 int checkSquare(Point arr[5][6], int row, int row2, int col, int col2, int* p) {
