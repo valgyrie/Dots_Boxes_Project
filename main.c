@@ -32,6 +32,7 @@ for (i = 0; i < 100; i++) {
         int result = checkSquare(grid, row1, row2, col1, col2,&x);
 
         if (result > 0) {
+            for(int j=0; j<x; j++)
             scores[t++] = currentPlayer;
             squares_count++;
             if (currentPlayer == 'A') score_A+=x; else score_B+=x;
