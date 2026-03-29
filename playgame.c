@@ -28,24 +28,24 @@ void addLine(Point arr[5][6], int row, int row2, int col, int col2) {
     }
 }
 
-int checkSquare(Point arr[5][6], int row, int row2, int col, int col2) {
+int checkSquare(Point arr[5][6], int row, int row2, int col, int col2, int* p) {
     int differenceC = col2 - col;
     int differenceR = row2 - row;
     int flag = 0;
-
+    *p=0;
     if (differenceR == 0) {
         int c = (col < col2) ? col : col2;
         if (row > 0 && arr[row][c].right == 1 && arr[row-1][c].right == 1 &&
-            arr[row][c].up == 1 && arr[row][c+1].up == 1) flag = 1;
+            arr[row][c].up == 1 && arr[row][c+1].up == 1){ flag = 1;*p+=1;}
 
         if (row < 4 && arr[row][c].right == 1 && arr[row+1][c].right == 1 &&
-            arr[row][c].down == 1 && arr[row][c+1].down == 1) flag = 2;
+            arr[row][c].down == 1 && arr[row][c+1].down == 1) { flag = 2;*p+=1;}
     } else if(differenceC == 0) {
         int r = (row < row2) ? row : row2;
         if (col > 0 && arr[r][col].down == 1 && arr[r][col-1].down == 1 &&
-            arr[r][col].left == 1 && arr[r+1][col].left == 1) flag = 3;
+            arr[r][col].left == 1 && arr[r+1][col].left == 1) { flag = 3;*p+=1;}
         if (col < 5 && arr[r][col].down == 1 && arr[r][col+1].down == 1 &&
-            arr[r][col].right == 1 && arr[r+1][col].right == 1) flag = 4;
+            arr[r][col].right == 1 && arr[r+1][col].right == 1) { flag = 4;*p+=1;}
     }
     return flag;
 }
