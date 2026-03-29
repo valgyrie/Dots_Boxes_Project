@@ -34,7 +34,7 @@ for (i = 0; i < 100; i++) {
         if (result > 0) {
             for(int j=0; j<x; j++)
             scores[t++] = currentPlayer;
-            squares_count++;
+            squares_count+=x;
             if (currentPlayer == 'A') score_A+=x; else score_B+=x;
             printf("Good turn player %c\n\n",currentPlayer);
             
