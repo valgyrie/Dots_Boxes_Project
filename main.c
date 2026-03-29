@@ -28,8 +28,9 @@ for (i = 0; i < 100; i++) {
         if (scanf("%d %d %d %d", &row1, &col1, &row2, &col2) != 4) break;
         
 
-        addLine(grid, row1, row2, col1, col2);
-        int result = checkSquare(grid, row1, row2, col1, col2,&x);
+        int y = addLine(grid, row1, row2, col1, col2);
+        if(y==0) printf("The line is drawn before");
+        int result = y!=0 ? checkSquare(grid, row1, row2, col1, col2,&x) : 0;
 
         if (result > 0) {
             for(int j=0; j<x; j++)
